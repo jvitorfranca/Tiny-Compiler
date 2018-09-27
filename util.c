@@ -17,7 +17,7 @@ void printToken( TokenType token, const char* tokenString )
   { case IF:
     case THEN:
     case ELSE:
-    case END:
+    case ENDIF:
     case REPEAT:
     case UNTIL:
     case READ:
