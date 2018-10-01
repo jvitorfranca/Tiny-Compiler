@@ -1,1 +1,5 @@
-switch case endswitch endif
+claudinho2 := 2;
+
+if claudinho2 < 3 
+  claudinho2 := claudinho2 + 1;
+endif

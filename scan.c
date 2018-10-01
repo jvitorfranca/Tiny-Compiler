@@ -133,6 +133,9 @@ TokenType getToken(void)
              case ')':
                currentToken = RPAREN;
                break;
+             case ':':
+               currentToken = DDOT;
+               break;
              case ';':
                currentToken = SEMI;
                break;
@@ -171,7 +174,7 @@ TokenType getToken(void)
          }
          break;
        case INID:
-         if (!isalpha(c))
+         if (!isalpha(c) && !isdigit(c))
          { /* backup in the input */
            ungetNextChar();
            save = FALSE;
