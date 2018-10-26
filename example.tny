@@ -1,5 +1,6 @@
-claudinho2 := 2;
+opcao := 1
 
-if claudinho2 < 3 
-  claudinho2 := claudinho2 + 1;
-endif
+switch(opcao)
+	case 1:
+		opcao := 2
+end switch
