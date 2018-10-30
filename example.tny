@@ -1,6 +1,6 @@
-opcao := 1
+var := 0
 
-switch(opcao)
-	case 1:
-		opcao := 2
-end switch
+switch(var)
+	case 0:
+		var := 1
+endswitch
