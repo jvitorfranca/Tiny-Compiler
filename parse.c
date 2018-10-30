@@ -91,9 +91,8 @@ TreeNode * switch_stmt(){
 }
 
 TreeNode * case_stmt(){
-  TreeNode *t = newStmtNode(CaseK);
-
-  if(token == CASE){
+  while(token == CASE){
+    TreeNode *t = newStmtNode(CaseK);
     match(CASE);
     if(t != NULL) t->child[0] = factor();
     match(DDOT);
@@ -192,7 +191,7 @@ TreeNode * term(void)
       p->attr.op = token;
       t = p;
       match(token);
-      p->child[1] = factor();
+      p->child[1] = factor();r
     }
   }
   return t;
