@@ -1,5 +1,6 @@
-claudinho2 := 2;
+var := 0
 
-if claudinho2 < 3 
-  claudinho2 := claudinho2 + 1;
-endif
+switch(var)
+	case 0:
+		var := 1
+endswitch
