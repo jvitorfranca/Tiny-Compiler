@@ -1,6 +1,6 @@
 var := 0
 
-switch(var)
+switch (var)
 	case 0:
 		var := 1
 endswitch

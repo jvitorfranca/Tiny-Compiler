@@ -36,8 +36,8 @@ static void syntaxError(char * message)
 static void match(TokenType expected)
 { if (token == expected) token = getToken();
   else {
-    syntaxError("Unexpected token -> ");
-    printToken(token,tokenString);
+    //syntaxError("Unexpected token -> ");
+    //printToken(token,tokenString);
     fprintf(listing,"      ");
   }
 }
@@ -79,28 +79,45 @@ TreeNode * statement(void)
   return t;
 }
 
-TreeNode * switch_stmt(){
+// TreeNode * switch_stmt()
+// {
+//   TreeNode *t = newStmtNode(SwitchK);
+//   match(SWITCH);
+//   match(LPAREN);
+//   if (t != NULL && token==ID){
+//     t->child[0] = exp_r();
+//   } 
+//   match(RPAREN);
+//   if (t != NULL){ 
+//     t->child[1] = case_stmt();
+//   }
+//   match(ENDSWITCH);
+//   return t;
+// }
+
+TreeNode * switch_stmt()
+{
   TreeNode *t = newStmtNode(SwitchK);
   match(SWITCH);
-  match(LPAREN);
-  if (t != NULL && token==ID) t->child[0] = factor();
-  match(RPAREN);
-  if (t != NULL) t->child[1] = case_stmt();
+  if (t != NULL){
+    t->child[0] = exp_r();
+    t->child[1] = case_stmt();
+  }
   match(ENDSWITCH);
+
   return t;
 }
 
 TreeNode * case_stmt(){
+  TreeNode *t = newStmtNode(CaseK);
   while(token == CASE){
-    TreeNode *t = newStmtNode(CaseK);
     match(CASE);
-    if(t != NULL) t->child[0] = factor();
+    if(t != NULL) t->child[0] = exp_r();
     match(DDOT);
     if(t != NULL) t->child[1] = stmt_sequence();
   }
   return t;
 }
-
 
 TreeNode * if_stmt(void)
 { TreeNode * t = newStmtNode(IfK);
@@ -191,7 +208,7 @@ TreeNode * term(void)
       p->attr.op = token;
       t = p;
       match(token);
-      p->child[1] = factor();r
+      p->child[1] = factor();
     }
   }
   return t;
