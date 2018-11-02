@@ -1,6 +1,8 @@
-var := 0
+read var1;
 
-switch (var)
-	case 0:
-		var := 1
+switch var1    
+case 1:
+	write 1
+case 2:
+	write 2
 endswitch
