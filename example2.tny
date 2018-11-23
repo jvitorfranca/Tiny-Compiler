@@ -1,0 +1,5 @@
+x := 1;
+
+if 0 < x then
+x := 2
+endif
